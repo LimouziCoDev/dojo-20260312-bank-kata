@@ -4,4 +4,4 @@
 
 2026-03-21
 
-- Début de l'écriture du test d'acceptance.
+- Début de l'écriture du test d'acceptation.
