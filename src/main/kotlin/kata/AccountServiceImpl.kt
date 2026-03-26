@@ -1,7 +1,7 @@
 package kata
 
 
-class AccountServiceImpl(val console: Console) : AccountService {
+class AccountServiceImpl() : AccountService {
     override fun deposit(amount: Int) {
         TODO("Not yet implemented")
     }
