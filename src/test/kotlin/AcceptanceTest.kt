@@ -1,13 +1,11 @@
-import io.mockk.Runs
-import io.mockk.every
 import io.mockk.impl.annotations.MockK
 import io.mockk.junit5.MockKExtension
-import io.mockk.just
-import io.mockk.verify
 import io.mockk.verifyOrder
-import io.mockk.verifySequence
 import kata.AccountService
+import kata.ClockImpl
 import kata.Console
+import kata.InMemoryTransactionRepository
+import kata.StatementPrinter
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
 
@@ -19,7 +17,10 @@ class AcceptanceTest {
 
     @Test
     fun `should print statement with correct transactions`() {
-        val accountService: AccountService = kata.AccountServiceImpl()
+        val accountService: AccountService = kata.AccountServiceImpl(
+            InMemoryTransactionRepository(ClockImpl()),
+            StatementPrinter()
+        )
 
         // Arrange
         accountService.deposit(1000)
